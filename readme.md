@@ -1,3 +1,8 @@
+# Laravel Base
+
+This is starter base using the latest Laravel 5.2. Setup include AUTH scaffold, boostrap 3, Laracasts generator, PHP to Vars and Easy Flash.
+
+
 # Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
