@@ -1,6 +1,6 @@
 # Laravel Base
 
-This is starter base using the latest Laravel 5.2. Setup include AUTH scaffold, boostrap 3, Laracasts generator, PHP to Vars and Easy Flash.
+This is starter base using the latest Laravel 5.2.22. Setup include Auth scaffold, Permission using Entrust, Boostrap 3, Laracasts generator, PHP to Vars and Easy Flash.
 
 # How to install
 
@@ -12,6 +12,7 @@ This is starter base using the latest Laravel 5.2. Setup include AUTH scaffold, 
 6. php artisan key:generate
 7. update the db configuration in .env
 8. php artisan migrate
+9. php artisan db:seed
 
 Thats all!
 
