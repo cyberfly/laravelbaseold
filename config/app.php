@@ -158,6 +158,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         'Laracasts\Flash\FlashServiceProvider',
         'Laracasts\Utilities\JavaScript\JavaScriptServiceProvider',
+        'Zizaco\Entrust\EntrustServiceProvider'
     ],
 
     /*
@@ -203,9 +204,10 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
-        'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class,
-        'Flash' => 'Laracasts\Flash\Flash'
+        'Form'      => Collective\Html\FormFacade::class,
+        'Html'      => Collective\Html\HtmlFacade::class,
+        'Flash'     => 'Laracasts\Flash\Flash',
+        'Entrust'   => Zizaco\Entrust\EntrustServiceProvider::class
     ],
 
 ];

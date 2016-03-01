@@ -104,4 +104,11 @@ return [
         ],
     ],
 
+    /*
+    ENTRUST CONFIG
+    */
+
+    'table' => 'users',
+    'model' => App\User::class,
+
 ];
