@@ -24,10 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if ($user->hasRole('admin')) {
-            echo "string";
-        }
-
         return view('home');
     }
 }

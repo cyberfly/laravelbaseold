@@ -158,7 +158,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         'Laracasts\Flash\FlashServiceProvider',
         'Laracasts\Utilities\JavaScript\JavaScriptServiceProvider',
-        'Zizaco\Entrust\EntrustServiceProvider'
+        Zizaco\Entrust\EntrustServiceProvider::class
     ],
 
     /*
@@ -207,7 +207,7 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
         'Flash'     => 'Laracasts\Flash\Flash',
-        'Entrust'   => Zizaco\Entrust\EntrustServiceProvider::class
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class
     ],
 
 ];
