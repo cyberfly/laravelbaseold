@@ -34,4 +34,19 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('/home', 'HomeController@index');
+
+});
+
+
+/** ------------------------------------------
+ *  Admin Routes
+ *  ------------------------------------------
+ */
+
+Route::group(['prefix' => 'admin','middleware' => 'web'], function () {
+
+	Route::get('home', 'Admin\AdminHomeController@index');
+
+    Route::resource('users', 'Admin\AdminUsersController');
+
 });
