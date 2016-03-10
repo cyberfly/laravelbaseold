@@ -3,7 +3,7 @@
 @section('heading', 'Users')
 
 @section('content')
-<div class="models--actions">
+<div class="models-actions">
     <a class="btn btn-labeled btn-primary" href="{{ route('admin.users.create') }}"><span class="btn-label"><i class="fa fa-plus"></i></span>{{ trans('admin/users.create-user') }}</a>
 </div>
 <table class="table table-bordered table-striped table-hover">

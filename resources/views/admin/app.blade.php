@@ -16,6 +16,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('libs/sweetalert/sweetalert.css') }}">
 
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
@@ -36,20 +37,20 @@
     @include('admin.partials.navigation')
 
     <div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            @include('admin.partials.notifications')
-            @include('flash::message')
-            <div class="panel panel-default">
-                <div class="panel-heading">@yield('heading')</div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                @include('admin.partials.notifications')
+                @include('flash::message')
+                <div class="panel panel-default">
+                    <div class="panel-heading">@yield('heading')</div>
 
-                <div class="panel-body">
-                    @yield('content')
+                    <div class="panel-body">
+                        @yield('content')
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-  </div>
+   </div>
 
 
 
