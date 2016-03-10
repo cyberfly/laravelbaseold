@@ -13,6 +13,7 @@ use App\Role;
 use App\Http\Requests\AdminUsersRequest;
 
 use Flash;
+use Alert;
 
 class AdminUsersController extends Controller
 {
@@ -146,6 +147,7 @@ class AdminUsersController extends Controller
         $user->roles()->sync($request->roles);
 
         Flash::success(trans('admin/users.updated'));
+        Alert::success('Success Message', 'Optional Title');
     	return back();
     }
 

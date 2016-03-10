@@ -158,7 +158,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         'Laracasts\Flash\FlashServiceProvider',
         'Laracasts\Utilities\JavaScript\JavaScriptServiceProvider',
-        Zizaco\Entrust\EntrustServiceProvider::class
+        Zizaco\Entrust\EntrustServiceProvider::class,
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class
     ],
 
     /*
@@ -207,7 +208,8 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
         'Flash'     => 'Laracasts\Flash\Flash',
-        'Entrust'   => Zizaco\Entrust\EntrustFacade::class
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        'Alert'     => UxWeb\SweetAlert\SweetAlert::class
     ],
 
 ];

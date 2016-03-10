@@ -36,6 +36,7 @@ class AdminUsersRequest extends Request
                     'name' => 'required|max:255',
                     'email' => 'required|email|max:255|unique:users',
                     'password' => 'required|confirmed|min:6',
+                    'roles' => 'required',
                 ];
             }
             case 'PUT':
@@ -45,6 +46,7 @@ class AdminUsersRequest extends Request
                             'name' => 'required|max:255',
                             'email' => 'required|email|max:255|unique:users,email,'.$this->users,
                             'password' => 'sometimes|confirmed|min:6',
+                            'roles' => 'required',
 
                 ];
 
