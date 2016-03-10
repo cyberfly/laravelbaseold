@@ -141,19 +141,12 @@ class AdminUsersController extends Controller
 	        $user->password = bcrypt($request->password);
         }
 
-        if($user->save() === false){
+        $user->save();
 
-        	Flash::error(trans('admin/general.created'));
-        	return back()->withInput();
+        $user->roles()->sync($request->roles);
 
-        }
-        else
-        {
-        	Flash::success(trans('admin/users.updated'));
-        	// return redirect(route('admin.users.index'));
-        	return back();
-        }
-
+        Flash::success(trans('admin/users.updated'));
+    	return back();
     }
 
     /**
