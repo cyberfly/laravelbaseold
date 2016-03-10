@@ -17,16 +17,21 @@
       <td>{{ $user->name }}</th>
       <td>{{ $user->email }}</th>
       <td class="col-xs-3">
-        <form action="{{ route('admin.users.destroy', $user->id) }}" method="post">
-          <input type="hidden" name="_method" value="DELETE">
-          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+        {!! Form::open(['data-remote','route' => ['admin.users.destroy',$user->id], 'method' => 'DELETE']) !!}
+
           <a class="btn btn-labeled btn-default" href="{{ route('admin.users.edit', $user->id) }}"><span class="btn-label"><i class="fa fa-pencil"></i></span>{{ trans('admin/users.edit') }}</a>
-          <button type="submit" class="btn btn-labeled btn-danger"><span class="btn-label"><i class="fa fa-trash"></i></span>{{ trans('admin/users.delete') }}</button>
-        </form>
+
+          <button type="button" data-destroy="data-destroy" class="btn btn-labeled btn-danger"><span class="btn-label"><i class="fa fa-trash"></i></span>{{ trans('admin/users.delete') }}</button>
+
+        {!! Form::close() !!}
       </td>
     </tr>
   @endforeach
 </table>
+
+{{ $users->appends(Request::except('page'))->links() }}
+
 <div class="text-center">
 
 </div>

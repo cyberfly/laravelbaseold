@@ -58,13 +58,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.js"></script>
     <script type="text/javascript" src="{{ URL::asset('libs/sweetalert/sweetalert.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/ajax_helpers.js') }}"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
     @include('sweet::alert')
 
     <script>
     (function() {
-      $('select').select2();
+      // $('select').select2();
     })();
     </script>
     @yield('scripts')

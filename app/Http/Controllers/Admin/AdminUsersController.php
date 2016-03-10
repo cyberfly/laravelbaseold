@@ -30,6 +30,7 @@ class AdminUsersController extends Controller
     public function __construct(Request $request)
     {
         $this->request = $request;
+        $this->middleware('auth');
     }
 
     /**
@@ -147,7 +148,7 @@ class AdminUsersController extends Controller
         $user->roles()->sync($request->roles);
 
         Flash::success(trans('admin/users.updated'));
-        Alert::success('Success Message', 'Optional Title');
+        // Alert::success('Success Message', 'Optional Title');
     	return back();
     }
 
@@ -165,7 +166,15 @@ class AdminUsersController extends Controller
 
 		$user->delete();
 
-        Flash::success(trans('admin/users.destroyed'));
-        return redirect(route('admin.users.index'));
+		if($this->request->ajax()){
+            return response()->json(['result' => 'success', 'message' => trans('admin/users.destroyed'), 'flag' => 'Deleted!']);
+        }
+        else
+        {
+        	Flash::success(trans('admin/users.destroyed'));
+	        return redirect(route('admin.users.index'));
+        }
+
+
     }
 }
