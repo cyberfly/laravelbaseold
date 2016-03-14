@@ -1,5 +1,34 @@
 @extends('admin.app')
 
+@section('content_filter')
+
+<div class="panel panel-info">
+  <div class="panel-heading">Filter</div>
+  <div class="panel-body">
+
+        {!! Form::open(array('route' => 'admin.users.index', 'method'=>'GET')) !!}
+
+            <div class="row">
+              <div class="col-lg-4">
+                {!! Form::text('name',Request::get('name'),array('class'=>'form-control','placeholder'=>'Enter Name')) !!}
+              </div>
+              <div class="col-lg-4">
+                {!! Form::text('email',Request::get('email'),array('class'=>'form-control','placeholder'=>'Enter Email')) !!}
+              </div>
+              <div class="col-lg-4">
+                {!! Form::submit('Search User',array('class'=>'btn btn-primary')) !!}
+              </div>
+            </div>
+
+        {!! Form::close() !!}
+
+
+  </div>
+</div>
+
+
+@endsection
+
 @section('heading', 'Users')
 
 @section('content')

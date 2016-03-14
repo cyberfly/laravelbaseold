@@ -41,7 +41,22 @@ class AdminUsersController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(5);
+        // user search
+
+        $name = $this->request->name;
+        $email = $this->request->email;
+
+        $users = new User;
+
+        if (!empty($name)) {
+        	$users = $users->name($name);
+        }
+
+        if (!empty($email)) {
+        	$users = $users->email($email);
+        }
+
+        $users = $users->paginate(5);
 
         return view('admin.users.index',compact('users'));
     }
