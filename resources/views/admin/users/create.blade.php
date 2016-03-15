@@ -28,7 +28,7 @@
 
     <div class="form-group {{ $errors->has('roles') ? 'has-error' : false }}">
         {!! Form::label('roles', 'Roles') !!}
-        {!! Form::select('roles[]', $roles, null, ['class' => 'form-control', 'multiple'=>'multiple']); !!}
+        {!! Form::select('roles[]', $roles, null, ['class' => 'form-control', 'multiple'=>'multiple', 'size'=>$roles->count()]); !!}
     </div>
 
 

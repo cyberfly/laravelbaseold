@@ -1,12 +1,18 @@
-@extends(Config::get('entrust-gui.layout'))
+@extends('admin.app')
 
 @section('heading', 'Edit Permission')
 
 @section('content')
-<form action="{{ route('entrust-gui::permissions.update', $model->id) }}" method="post" role="form">
-<input type="hidden" name="_method" value="put">
-  @include('entrust-gui::permissions.partials.form')
-  <button type="submit" class="btn btn-labeled btn-primary"><span class="btn-label"><i class="fa fa-check"></i></span>{{ trans('entrust-gui::button.save') }}</button>
-  <a class="btn btn-labeled btn-default" href="{{ route('entrust-gui::permissions.index') }}"><span class="btn-label"><i class="fa fa-chevron-left"></i></span>{{ trans('entrust-gui::button.cancel') }}</a>
-</form>
+{!! Form::open(['route' => ['admin.permissions.update',$permission->id],'method'=>'put']) !!}
+
+    <div class="form-group {{ $errors->has('name') ? 'has-error' : false }}">
+        {!! Form::label('name', 'Name') !!}
+        {!! Form::text('name', $permission->name, ['class' => 'form-control']) !!}
+    </div>
+
+    <button type="submit" id="update" class="btn btn-labeled btn-primary"><span class="btn-label"><i class="fa fa-plus"></i></span>{{ trans('admin/general.update') }}</button>
+
+    <a class="btn btn-labeled btn-default" href="{{ route('admin.permissions.index') }}"><span class="btn-label"><i class="fa fa-chevron-left"></i></span>{{ trans('admin/general.cancel') }}</a>
+
+{!! Form::close() !!}
 @endsection

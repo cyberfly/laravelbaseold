@@ -1,11 +1,24 @@
-@extends(Config::get('entrust-gui.layout'))
+@extends('admin.app')
 
 @section('heading', 'Create Role')
 
 @section('content')
-<form action="{{ route('entrust-gui::roles.store') }}" method="post" role="form">
-    @include('entrust-gui::roles.partials.form')
-    <button type="submit" class="btn btn-labeled btn-primary"><span class="btn-label"><i class="fa fa-plus"></i></span>{{ trans('entrust-gui::button.create') }}</button>
-    <a class="btn btn-labeled btn-default" href="{{ route('entrust-gui::roles.index') }}"><span class="btn-label"><i class="fa fa-chevron-left"></i></span>{{ trans('entrust-gui::button.cancel') }}</a>
-</form>
+{!! Form::open(['route' => 'admin.roles.store']) !!}
+
+    <div class="form-group {{ $errors->has('name') ? 'has-error' : false }}">
+        {!! Form::label('name', 'Name') !!}
+        {!! Form::text('name', null, ['class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group {{ $errors->has('permissions') ? 'has-error' : false }}">
+        {!! Form::label('permissions', 'Permissions') !!}
+        {!! Form::select('permissions[]', $permissions, null, ['class' => 'form-control', 'multiple'=>'multiple', 'size'=>$permissions->count()]); !!}
+    </div>
+
+
+    <button type="submit" id="create" class="btn btn-labeled btn-primary"><span class="btn-label"><i class="fa fa-plus"></i></span>{{ trans('admin/general.create') }}</button>
+
+    <a class="btn btn-labeled btn-default" href="{{ route('admin.roles.index') }}"><span class="btn-label"><i class="fa fa-chevron-left"></i></span>{{ trans('admin/general.cancel') }}</a>
+
+{!! Form::close() !!}
 @endsection

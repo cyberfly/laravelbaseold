@@ -48,5 +48,7 @@ Route::group(['prefix' => 'admin','middleware' => 'web'], function () {
 	Route::get('home', 'Admin\AdminHomeController@index');
 
     Route::resource('users', 'Admin\AdminUsersController');
+    Route::resource('roles', 'Admin\AdminRolesController');
+    Route::resource('permissions', 'Admin\AdminPermissionsController');
 
 });

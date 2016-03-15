@@ -20,8 +20,8 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li class="{{ (Request::is('*users*') ? 'active' : '') }}"><a href="{{ route('admin.users.index') }}">{{ trans('admin/navigation.users') }}</a></li>
-                    <li class="{{ (Request::is('*roles*') ? 'active' : '') }}"><a href="{{ route('admin.users.index') }}">{{ trans('admin/navigation.roles') }}</a></li>
-                    <li class="{{ (Request::is('*permissions*') ? 'active' : '') }}"><a href="{{ route('admin.users.index') }}">{{ trans('admin/navigation.permissions') }}</a></li>
+                    <li class="{{ (Request::is('*roles*') ? 'active' : '') }}"><a href="{{ route('admin.roles.index') }}">{{ trans('admin/navigation.roles') }}</a></li>
+                    <li class="{{ (Request::is('*permissions*') ? 'active' : '') }}"><a href="{{ route('admin.permissions.index') }}">{{ trans('admin/navigation.permissions') }}</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

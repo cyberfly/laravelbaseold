@@ -29,7 +29,7 @@
     <div class="form-group {{ $errors->has('roles') ? 'has-error' : false }}">
         {!! Form::label('roles', 'Roles') !!}
 
-		<select name="roles[]" id="roles" multiple class="form-control">
+		<select name="roles[]" id="roles" multiple class="form-control" size="<?php echo $roles->count() ?>">
         @foreach($roles as $index => $role)
             <option value="{{ $index }}" {{ ((in_array($index, old('roles', []))) || ( ! Session::has('errors') && $user->roles->contains('id', $index))) ? 'selected' : '' }}>{{ $role }}</option>
         @endforeach

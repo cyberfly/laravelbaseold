@@ -1,31 +1,62 @@
-@extends(Config::get('entrust-gui.layout'))
+@extends('admin.app')
+
+@section('content_filter')
+
+<div class="panel panel-info">
+  <div class="panel-heading">Filter</div>
+  <div class="panel-body">
+
+        {!! Form::open(array('route' => 'admin.permissions.index', 'method'=>'GET')) !!}
+
+            <div class="row">
+              <div class="col-lg-4">
+                {!! Form::text('name',Request::get('name'),array('class'=>'form-control','placeholder'=>'Enter Name')) !!}
+              </div>
+              <div class="col-lg-4">
+                {!! Form::submit('Search Permission',array('class'=>'btn btn-primary')) !!}
+              </div>
+            </div>
+
+        {!! Form::close() !!}
+
+
+  </div>
+</div>
+
+
+@endsection
 
 @section('heading', 'Permissions')
 
 @section('content')
-<div class="models--actions">
-    <a class="btn btn-labeled btn-primary" href="{{ route('entrust-gui::permissions.create') }}"><span class="btn-label"><i class="fa fa-plus"></i></span>{{ trans('entrust-gui::button.create-permission') }}</a>
-  </div>
-<table class="table table-striped">
+<div class="models-actions">
+    <a class="btn btn-labeled btn-primary" href="{{ route('admin.permissions.create') }}"><span class="btn-label"><i class="fa fa-plus"></i></span>{{ trans('admin/permissions.create-permission') }}</a>
+</div>
+<table class="table table-bordered table-striped table-hover">
+  <tr>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+  @foreach($permissions as $permission)
     <tr>
-        <th>Name</th>
-        <th>Actions</th>
+      <td>{{ $permission->name }}</th>
+      <td class="col-xs-3">
+
+        {!! Form::open(['data-remote','route' => ['admin.permissions.destroy',$permission->id], 'method' => 'DELETE']) !!}
+
+          <a class="btn btn-labeled btn-default" href="{{ route('admin.permissions.edit', $permission->id) }}"><span class="btn-label"><i class="fa fa-pencil"></i></span>{{ trans('admin/permissions.edit') }}</a>
+
+          <button type="button" data-destroy="data-destroy" class="btn btn-labeled btn-danger"><span class="btn-label"><i class="fa fa-trash"></i></span>{{ trans('admin/permissions.delete') }}</button>
+
+        {!! Form::close() !!}
+      </td>
     </tr>
-    @foreach($models as $model)
-        <tr>
-            <td>{{ $model->name }}</th>
-            <td class="col-xs-3">
-                <form action="{{ route('entrust-gui::permissions.destroy', $model->id) }}" method="post">
-                    <input type="hidden" name="_method" value="DELETE">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <a class="btn btn-labeled btn-default" href="{{ route('entrust-gui::permissions.edit', $model->id) }}"><span class="btn-label"><i class="fa fa-pencil"></i></span>{{ trans('entrust-gui::button.edit') }}</a>
-                    <button type="submit" class="btn btn-labeled btn-danger"><span class="btn-label"><i class="fa fa-trash"></i></span>{{ trans('entrust-gui::button.delete') }}</button>
-                </form>
-            </td>
-        </tr>
-    @endforeach
+  @endforeach
 </table>
+
+{{ $permissions->appends(Request::except('page'))->links() }}
+
 <div class="text-center">
-    {!! $models->render() !!}
+
 </div>
 @endsection
