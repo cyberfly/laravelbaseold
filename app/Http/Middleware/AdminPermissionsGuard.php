@@ -21,53 +21,36 @@ class AdminPermissionsGuard
 
         if ($route_name=='admin.permissions.index') {
 
-            if (!Entrust::can('manage_permissions')) {
-
-                if ($request->ajax() || $request->wantsJson()) {
-                    return response('Unauthorized.', 401);
-                } else {
-                    abort(403, 'Access denied');
-                }
-            }
-
+            $this->GuardIfFailed($request, 'manage_permissions');
         }
 
         if ($route_name=='admin.permissions.create' || $route_name=='admin.permissions.store') {
 
-            if (!Entrust::can('create_permission')) {
-
-                if ($request->ajax() || $request->wantsJson()) {
-                    return response('Unauthorized.', 401);
-                } else {
-                    abort(403, 'Access denied');
-                }
-            }
+            $this->GuardIfFailed($request, 'create_permission');
         }
 
         if ($route_name=='admin.permissions.edit' || $route_name=='admin.permissions.update') {
 
-            if (!Entrust::can('edit_permission')) {
-
-                if ($request->ajax() || $request->wantsJson()) {
-                    return response('Unauthorized.', 401);
-                } else {
-                    abort(403, 'Access denied');
-                }
-            }
+            $this->GuardIfFailed($request, 'edit_permission');
         }
 
         if ($route_name=='admin.permissions.destroy') {
 
-            if (!Entrust::can('delete_permission')) {
-
-                if ($request->ajax() || $request->wantsJson()) {
-                    return response('Unauthorized.', 401);
-                } else {
-                    abort(403, 'Access denied');
-                }
-            }
+            $this->GuardIfFailed($request, 'delete_permission');
         }
 
         return $next($request);
+    }
+
+    private function GuardIfFailed($request, $permission)
+    {
+        if (!Entrust::can($permission)) {
+
+            if ($request->ajax() || $request->wantsJson()) {
+                return response('Unauthorized.', 401);
+            } else {
+                abort(403, 'Access denied');
+            }
+        }
     }
 }

@@ -21,53 +21,36 @@ class AdminUsersGuard
 
         if ($route_name=='admin.users.index') {
 
-            if (!Entrust::can('manage_users')) {
-
-                if ($request->ajax() || $request->wantsJson()) {
-                    return response('Unauthorized.', 401);
-                } else {
-                    abort(403, 'Access denied');
-                }
-            }
-
+            $this->GuardIfFailed($request, 'manage_users');
         }
 
         if ($route_name=='admin.users.create' || $route_name=='admin.users.store') {
 
-            if (!Entrust::can('create_user')) {
-
-                if ($request->ajax() || $request->wantsJson()) {
-                    return response('Unauthorized.', 401);
-                } else {
-                    abort(403, 'Access denied');
-                }
-            }
+            $this->GuardIfFailed($request, 'create_user');
         }
 
         if ($route_name=='admin.users.edit' || $route_name=='admin.users.update') {
 
-            if (!Entrust::can('edit_user')) {
-
-                if ($request->ajax() || $request->wantsJson()) {
-                    return response('Unauthorized.', 401);
-                } else {
-                    abort(403, 'Access denied');
-                }
-            }
+            $this->GuardIfFailed($request, 'edit_user');
         }
 
         if ($route_name=='admin.users.destroy') {
 
-            if (!Entrust::can('delete_user')) {
-
-                if ($request->ajax() || $request->wantsJson()) {
-                    return response('Unauthorized.', 401);
-                } else {
-                    abort(403, 'Access denied');
-                }
-            }
+            $this->GuardIfFailed($request, 'delete_user');
         }
 
         return $next($request);
+    }
+
+    private function GuardIfFailed($request, $permission)
+    {
+        if (!Entrust::can($permission)) {
+
+            if ($request->ajax() || $request->wantsJson()) {
+                return response('Unauthorized.', 401);
+            } else {
+                abort(403, 'Access denied');
+            }
+        }
     }
 }
