@@ -46,7 +46,8 @@ class AdminRolesController extends Controller
 
         $name = $this->request->name;
 
-        $roles = new Role;
+        // $roles = new Role;
+        $roles = Role::with('perms');
 
         if (!empty($name)) {
         	$roles = $roles->name($name);

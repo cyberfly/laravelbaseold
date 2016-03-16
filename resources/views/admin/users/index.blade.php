@@ -16,7 +16,7 @@
                 {!! Form::text('email',Request::get('email'),array('class'=>'form-control','placeholder'=>'Enter Email')) !!}
               </div>
               <div class="col-lg-4">
-                {!! Form::submit('Search User',array('class'=>'btn btn-primary')) !!}
+                {!! Form::submit(trans('admin/users.search-user'),array('class'=>'btn btn-primary')) !!}
               </div>
             </div>
 
@@ -39,12 +39,19 @@
   <tr>
     <th>Name</th>
     <th>Email</th>
+    <th>Roles</th>
     <th>Actions</th>
   </tr>
   @foreach($users as $user)
     <tr>
-      <td>{{ $user->name }}</th>
-      <td>{{ $user->email }}</th>
+      <td>{{ $user->name }}</td>
+      <td>{{ $user->email }}</td>
+      <td>
+          @foreach($user->roles as $role)
+              <code> {{ $role->display_name }} </code>
+              <br>
+          @endforeach
+      </td>
       <td class="col-xs-3">
 
         {!! Form::open(['data-remote','route' => ['admin.users.destroy',$user->id], 'method' => 'DELETE']) !!}

@@ -13,7 +13,7 @@
                 {!! Form::text('name',Request::get('name'),array('class'=>'form-control','placeholder'=>'Enter Name')) !!}
               </div>
               <div class="col-lg-4">
-                {!! Form::submit('Search Permission',array('class'=>'btn btn-primary')) !!}
+                {!! Form::submit(trans('admin/permissions.search-permission'),array('class'=>'btn btn-primary')) !!}
               </div>
             </div>
 

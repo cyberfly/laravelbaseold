@@ -13,7 +13,7 @@
                 {!! Form::text('name',Request::get('name'),array('class'=>'form-control','placeholder'=>'Enter Name')) !!}
               </div>
               <div class="col-lg-4">
-                {!! Form::submit('Search Role',array('class'=>'btn btn-primary')) !!}
+                {!! Form::submit(trans('admin/roles.search-role'),array('class'=>'btn btn-primary')) !!}
               </div>
             </div>
 
@@ -36,12 +36,19 @@
   <tr>
     <th>Display Name</th>
     <th>Name</th>
+    <th>Role Can</th>
     <th>Actions</th>
   </tr>
   @foreach($roles as $role)
     <tr>
-      <td>{{ $role->display_name }}</th>
-      <td>{{ $role->name }}</th>
+      <td>{{ $role->display_name }}</td>
+      <td>{{ $role->name }}</td>
+      <td>
+          @foreach($role->perms as $permission)
+              <code> {{ $permission->display_name }} </code>
+              <br>
+          @endforeach
+      </td>
       <td class="col-xs-3">
 
         {!! Form::open(['data-remote','route' => ['admin.roles.destroy',$role->id], 'method' => 'DELETE']) !!}
