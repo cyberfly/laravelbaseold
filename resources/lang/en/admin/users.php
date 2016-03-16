@@ -14,8 +14,11 @@ return [
     */
 
     'create-user' => 'Create User',
+    'search-user' => 'Search User',
     'edit' => 'Edit',
     'delete' => 'Delete',
     'created' => 'User successfully created',
+    'updated' => 'User successfully updated',
+    'destroyed' => 'User successfully deleted',
 
 ];

@@ -34,6 +34,7 @@ class AdminRolesRequest extends Request
             {
                 return [
                     'name' => 'required|max:255',
+                    'display_name' => 'required|max:255',
                     'permissions' => 'required',
                 ];
             }
@@ -42,6 +43,7 @@ class AdminRolesRequest extends Request
             {
                 $patch_rules = [
                             'name' => 'required|max:255',
+                            'display_name' => 'required|max:255',
                             'permissions' => 'required',
 
                 ];

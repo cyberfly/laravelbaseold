@@ -34,6 +34,7 @@ class AdminPermissionsRequest extends Request
             {
                 return [
                     'name' => 'required|max:255',
+                    'display_name' => 'required|max:255',
                 ];
             }
             case 'PUT':
@@ -41,6 +42,7 @@ class AdminPermissionsRequest extends Request
             {
                 $patch_rules = [
                             'name' => 'required|max:255',
+                            'display_name' => 'required|max:255',
 
                 ];
 

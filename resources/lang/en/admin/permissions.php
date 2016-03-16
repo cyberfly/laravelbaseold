@@ -13,8 +13,11 @@ return [
     |
     */
 
-    'create' => 'Create',
-    'cancel' => 'Cancel',
-    'update' => 'Update',
-
+    'create-permission' => 'Create Permission',
+    'search-permission' => 'Search Permission',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'created' => 'Permission successfully created',
+    'updated' => 'Permission successfully updated',
+    'destroyed' => 'Permission successfully deleted',
 ];

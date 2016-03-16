@@ -34,19 +34,29 @@
 </div>
 <table class="table table-bordered table-striped table-hover">
   <tr>
+    <th>Display Name</th>
     <th>Name</th>
     <th>Actions</th>
   </tr>
   @foreach($permissions as $permission)
     <tr>
+      <td>{{ $permission->display_name }}</th>
       <td>{{ $permission->name }}</th>
       <td class="col-xs-3">
 
         {!! Form::open(['data-remote','route' => ['admin.permissions.destroy',$permission->id], 'method' => 'DELETE']) !!}
 
+          @permission('edit_permission')
+
           <a class="btn btn-labeled btn-default" href="{{ route('admin.permissions.edit', $permission->id) }}"><span class="btn-label"><i class="fa fa-pencil"></i></span>{{ trans('admin/permissions.edit') }}</a>
 
+          @endpermission
+
+          @permission('delete_permission')
+
           <button type="button" data-destroy="data-destroy" class="btn btn-labeled btn-danger"><span class="btn-label"><i class="fa fa-trash"></i></span>{{ trans('admin/permissions.delete') }}</button>
+
+          @endpermission
 
         {!! Form::close() !!}
       </td>

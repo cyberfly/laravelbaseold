@@ -44,7 +44,7 @@ $(function() {
         },
         function(){
           form.submit();
-          row.hide();
+          row.fadeOut('slow');
         });
 
         input.removeAttr('disabled');

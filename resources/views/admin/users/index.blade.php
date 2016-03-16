@@ -49,9 +49,17 @@
 
         {!! Form::open(['data-remote','route' => ['admin.users.destroy',$user->id], 'method' => 'DELETE']) !!}
 
+          @permission('edit_user')
+
           <a class="btn btn-labeled btn-default" href="{{ route('admin.users.edit', $user->id) }}"><span class="btn-label"><i class="fa fa-pencil"></i></span>{{ trans('admin/users.edit') }}</a>
 
+          @endpermission
+
+          @permission('delete_user')
+
           <button type="button" data-destroy="data-destroy" class="btn btn-labeled btn-danger"><span class="btn-label"><i class="fa fa-trash"></i></span>{{ trans('admin/users.delete') }}</button>
+
+          @endpermission
 
         {!! Form::close() !!}
       </td>

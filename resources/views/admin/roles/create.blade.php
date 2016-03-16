@@ -10,6 +10,11 @@
         {!! Form::text('name', null, ['class' => 'form-control']) !!}
     </div>
 
+    <div class="form-group {{ $errors->has('display_name') ? 'has-error' : false }}">
+        {!! Form::label('display_name', 'Display Name') !!}
+        {!! Form::text('display_name', null, ['class' => 'form-control']) !!}
+    </div>
+
     <div class="form-group {{ $errors->has('permissions') ? 'has-error' : false }}">
         {!! Form::label('permissions', 'Permissions') !!}
         {!! Form::select('permissions[]', $permissions, null, ['class' => 'form-control', 'multiple'=>'multiple', 'size'=>$permissions->count()]); !!}

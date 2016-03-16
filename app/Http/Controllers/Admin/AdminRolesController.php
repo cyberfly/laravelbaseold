@@ -31,6 +31,7 @@ class AdminRolesController extends Controller
     {
         $this->request = $request;
         $this->middleware('auth');
+        $this->middleware('AdminRolesGuard');
     }
 
     /**
@@ -80,6 +81,7 @@ class AdminRolesController extends Controller
         $role = new Role;
 
         $role->name = $request->name;
+        $role->display_name = $request->display_name;
         $role->save();
 
         if ($role->id) {
@@ -109,7 +111,7 @@ class AdminRolesController extends Controller
      */
     public function getPermissions()
     {
-        $permissions = Permission::lists('name','id');
+        $permissions = Permission::lists('display_name','id');
 
         return $permissions;
     }
@@ -145,6 +147,7 @@ class AdminRolesController extends Controller
         $role = Role::findOrFail($id);
 
         $role->name = $request->name;
+        $role->display_name = $request->display_name;
 
         $role->save();
 

@@ -13,8 +13,11 @@ return [
     |
     */
 
-    'create' => 'Create',
-    'cancel' => 'Cancel',
-    'update' => 'Update',
-
+    'create-role' => 'Create Role',
+    'search-role' => 'Search Role',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'created' => 'Role successfully created',
+    'updated' => 'Role successfully updated',
+    'destroyed' => 'Role successfully deleted',
 ];

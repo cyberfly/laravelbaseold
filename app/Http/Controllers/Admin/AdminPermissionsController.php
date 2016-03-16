@@ -31,6 +31,7 @@ class AdminPermissionsController extends Controller
     {
         $this->request = $request;
         $this->middleware('auth');
+        $this->middleware('AdminPermissionsGuard');
     }
 
     /**
@@ -78,6 +79,7 @@ class AdminPermissionsController extends Controller
         $permission = new Permission;
 
         $permission->name = $request->name;
+        $permission->display_name = $request->display_name;
         $permission->save();
 
         if ($permission->id) {
@@ -124,6 +126,7 @@ class AdminPermissionsController extends Controller
         $permission = Permission::findOrFail($id);
 
         $permission->name = $request->name;
+        $permission->display_name = $request->display_name;
 
         $permission->save();
 
